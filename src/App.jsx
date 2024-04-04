@@ -23,8 +23,8 @@ function App() {
     <>
       <header>
         <nav className={css.nav}>
-          <NavLink className={getNavLinkClassName} to="/">HomePage</NavLink>
-          <NavLink className={getNavLinkClassName} to="/movies">MoviesPage</NavLink>
+          <NavLink className={getNavLinkClassName} to="/">Home</NavLink>
+          <NavLink className={getNavLinkClassName} to="/movies">Movies</NavLink>
         </nav>
       </header>
       <main>

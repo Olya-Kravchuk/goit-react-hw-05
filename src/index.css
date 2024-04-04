@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: #111;
-  background-color: #fff;
+  background-color: #e1eae1;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -16,7 +16,11 @@
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  /* place-items: center; */
   min-width: 320px;
   min-height: 100vh;
+  /* color: #ffc7c4;
+  color: #bdc2bd;
+  color: #e1eae1;
+  color: #f5ebed; */
 }
