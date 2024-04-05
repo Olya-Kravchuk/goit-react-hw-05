@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const MovieList = ({movies}) => {
 
@@ -10,7 +11,9 @@ const MovieList = ({movies}) => {
         {Array.isArray(movies) &&
         movies.map(movie => {
           return (
-            <li key={movie.id}></li>
+            <li key={movie.id}>
+              <Link to={`/movies/${movie.id}`}>See the datails</Link>
+            </li>
           )
         })
           }

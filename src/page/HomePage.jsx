@@ -4,7 +4,9 @@ import ErrorMessage from "../components/ErrorMessage/ErrorMessage"
 import { useMovieSearch } from '../hooks/useMovieSearch'
 
 const HomePage = () => {
-  const {movies, loading, error} = useMovieSearch()
+  const {movies, loading, error} = useMovieSearch({
+    isMoviesPage: false,
+  })
 
 
   

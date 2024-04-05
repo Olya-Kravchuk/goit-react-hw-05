@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { fetchTrendingMovies, searchMoviesByName } from '../services/api';
 
-export const useMovieSearch = () => {
+export const useMovieSearch = ({ isMoviesPage = false }) => {
   const [movies, setMovies] = useState(null)
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [query, setQuery] = useState('');
 
   useEffect(() => {
+    if(isMoviesPage) return;
     async function feachData() {
       try {
         setLoading(true)

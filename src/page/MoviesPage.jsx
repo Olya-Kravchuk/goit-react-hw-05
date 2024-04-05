@@ -6,13 +6,13 @@ import { useMovieSearch } from '../hooks/useMovieSearch'
 
 const MoviesPage = () => {
 
-  const {movies, loading, error, onSetSearchQuery} = useMovieSearch()
-
-
+  const {movies, loading, error, onSetSearchQuery} = useMovieSearch({
+    isMoviesPage: true,
+  })
 
   return (
     <div>
-      <SearchForm onSubmit={onSetSearchQuery}/>
+      <SearchForm onSubmit={onSetSearchQuery} />
       {loading && <Loader/>}
       {error && <ErrorMessage/>}
       {movies && <MovieList movies={movies}/>}

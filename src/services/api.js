@@ -25,8 +25,8 @@ export const fetchTrendingMovies = async () => {
 
 export const fetchMovieDetailsById = async movieId => {
   try {
-    const response = await instance.get(`/movie/${movieId}`);
-    return response.data;
+    const {data} = await instance.get(`/movie/${movieId}`);
+    return data;
   } catch (error) {
     console.error("Error fetching movie details:", error);
     throw error;
@@ -35,8 +35,8 @@ export const fetchMovieDetailsById = async movieId => {
 
 export const searchMoviesByName = async (query = "") => {
   try {
-    const response = await instance.get(`/search/movie?query=${query}`);
-    return response.data.results;
+    const {data} = await instance.get(`/search/movie?query=${query}`);
+    return data.results;
   } catch (error) {
     console.error("Error searching for movies:", error);
     throw error;
@@ -45,8 +45,8 @@ export const searchMoviesByName = async (query = "") => {
 
 export const fetchMovieCastById = async movieId => {
   try {
-    const response = await instance.get(`movie/${movieId}/credits`);
-    return response.data.cast;
+    const {data} = await instance.get(`movie/${movieId}/credits`);
+    return data.cast;
   } catch (error) {
     console.error("Error fetching movie cast:", error);
     throw error;
@@ -55,8 +55,8 @@ export const fetchMovieCastById = async movieId => {
 
 export const fetchMovieReviewsById = async movieId => {
   try {
-    const response = await instance.get(`movie/${movieId}/reviews`);
-    return response.data.results;
+    const {data} = await instance.get(`movie/${movieId}/reviews`);
+    return data.results;
   } catch (error) {
     console.error("Error fetching movie reviews:", error);
     throw error;

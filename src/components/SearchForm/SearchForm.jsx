@@ -1,7 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import css from './SearchForm.module.css'
 
 const SearchForm = ({ onSubmit }) => {
+
+  const inputRef = useRef(null)
+
+  const  handleClick = () => {
+    inputRef.current.focus()
+  }
+
+  useEffect(() => {
+    if (inputRef.current === null) return
+    inputRef.current.focus()
+  }, [])
 
   const [value, setValue] = useState("");
 
@@ -26,13 +37,14 @@ const SearchForm = ({ onSubmit }) => {
     <form onSubmit={handleSubmit}>
         <input
           type="text"
+          ref={inputRef}
           value={value}
           onChange={handleChange}
           autoComplete="off"
           autoFocus
-          placeholder="Search images and photos"
+          placeholder="Enter your movie title"
         />
-        <button className={css.searchBtn} type="submit" >Search</button>
+        <button className={css.searchBtn} type="submit" onClick={handleClick}>Search</button>
       </form>
   )
 }
