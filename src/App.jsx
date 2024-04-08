@@ -6,7 +6,7 @@ import Navigation from './components/Navigation/Navigation';
 import HomePage from "./page/HomePage"
 import MoviesPage from "./page/MoviesPage"
 import NotFoundPage from './page/NotFoundPage';
-import MovieDetailsPage from './page/MovieDetailsPage';
+import MovieDetailsPage from './page/MovieDetailsPage/MovieDetailsPage';
 
 
 

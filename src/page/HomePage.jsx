@@ -9,13 +9,12 @@ const HomePage = () => {
   })
 
 
-  
-
   return (
     <div>
+      <h2>Trending today</h2>
       {loading && <Loader/>}
       {error && <ErrorMessage/>}
-      {movies && <MovieList movies={movies}/>}
+      {movies !== null && <MovieList movies={movies}/>}
 
     </div>
   )

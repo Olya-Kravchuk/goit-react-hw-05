@@ -12,12 +12,11 @@ export const useMovieSearch = ({ isMoviesPage = false }) => {
     async function feachData() {
       try {
         setLoading(true)
-        const {data} = await fetchTrendingMovies()
-      console.log("data", data);
-      
-      setMovies(data.movies)
+        setError(false);
+        const data = await fetchTrendingMovies()
+        setMovies(data)
       } catch (error) {
-        setError(true)
+        setError("Failed to fetch movies. Please try again later.");
       } finally {
         setLoading(false)
       }
@@ -31,12 +30,10 @@ export const useMovieSearch = ({ isMoviesPage = false }) => {
     async function feachMovies() {
       try {
         setLoading(true)
-        const {data} = await searchMoviesByName(query)
-      console.log("data", data);
-      
-      setMovies(data.movies)
+        const data = await searchMoviesByName(query)
+        setMovies(data)
       } catch (error) {
-        setError(true)
+        setError("Failed to fetch movies. Please try again later.");
       } finally {
         setLoading(false)
       }
@@ -50,6 +47,6 @@ export const useMovieSearch = ({ isMoviesPage = false }) => {
   const onSetSearchQuery = (searchTerm) => {
     setQuery(searchTerm)
   }
-  return (movies, loading, error, onSetSearchQuery)
+  return { movies, loading, error, onSetSearchQuery }
 }
 

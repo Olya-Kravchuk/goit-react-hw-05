@@ -1,9 +1,28 @@
-import React from 'react'
+import { useDetailsSearch } from "../../hooks/useDetailsSearch";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import Loader from "../Loader/Loader";
 
 const MovieReviews = () => {
+  const { loading, error, movieReviews } = useDetailsSearch();
   return (
-    <div>MovieReviews</div>
-  )
-}
+    <>
+      {loading && <Loader />}
+      {error && <ErrorMessage />}
 
-export default MovieReviews
+      <ul>
+        {movieReviews !== null ? (
+          movieReviews.map((review) => (
+            <li key={review.id}>
+              <p>{`Author: ${review.author}`}</p>
+              <p>{review.content}</p>
+            </li>
+          ))
+        ) : (
+          <p>We don&apos;t have any reviews for this movie.</p>
+        )}
+      </ul>
+    </>
+  );
+};
+
+export default MovieReviews;

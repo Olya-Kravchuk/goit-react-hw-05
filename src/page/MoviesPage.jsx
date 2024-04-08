@@ -15,7 +15,7 @@ const MoviesPage = () => {
       <SearchForm onSubmit={onSetSearchQuery} />
       {loading && <Loader/>}
       {error && <ErrorMessage/>}
-      {movies && <MovieList movies={movies}/>}
+      {movies !== null && <MovieList movies={movies}/>}
     </div>
   )
 }

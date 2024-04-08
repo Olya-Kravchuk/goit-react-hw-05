@@ -1,24 +1,23 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import css from "./MovieList.module.css"
 
 const MovieList = ({movies}) => {
 
   
   return (
-    <div>
-      <h2>Trending today</h2>
-      <ul>
-        {Array.isArray(movies) &&
-        movies.map(movie => {
-          return (
-            <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`}>See the datails</Link>
-            </li>
-          )
-        })
-          }
-      </ul>
-    </div>
+      
+    <ul>
+      {Array.isArray(movies) &&
+      movies.map(movie => {
+        return (
+          <li key={movie.id}>
+            <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+          </li>
+        )
+      })
+      }
+    </ul>
   )
 }
 

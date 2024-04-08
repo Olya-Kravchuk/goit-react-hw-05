@@ -41,7 +41,7 @@ const SearchForm = ({ onSubmit }) => {
           value={value}
           onChange={handleChange}
           autoComplete="off"
-          autoFocus
+          // autoFocus
           placeholder="Enter your movie title"
         />
         <button className={css.searchBtn} type="submit" onClick={handleClick}>Search</button>
