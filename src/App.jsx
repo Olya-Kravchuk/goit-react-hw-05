@@ -4,14 +4,14 @@ import Loader from "./components/Loader/Loader";
 // import css from "./App.module.css"
 
 // import Navigation from './components/Navigation/Navigation';
-// import HomePage from "./page/HomePage"
-// import MoviesPage from "./page/MoviesPage"
-// import NotFoundPage from './page/NotFoundPage';
-// import MovieDetailsPage from './page/MovieDetailsPage/MovieDetailsPage';
+// import HomePage from "./pages/HomePage"
+// import MoviesPage from "./pages/MoviesPage"
+// import NotFoundPage from './pages/NotFoundPage';
+// import MovieDetailsPage from './pages/MovieDetailsPage/MovieDetailsPage';
 const Navigation = lazy(() => import("./components/Navigation/Navigation"));
-const HomePage = lazy(() => import("./page/HomePage"));
-const MoviesPage = lazy(() => import("./page/MoviesPage"));
-const NotFoundPage = lazy(() => import("./page/NotFoundPage"));
+const HomePage = lazy(() => import("./pages/HomePage"));
+const MoviesPage = lazy(() => import("./pages/MoviesPage"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 const MovieDetailsPage = lazy(() =>
   import("./page/MovieDetailsPage/MovieDetailsPage")
 );
