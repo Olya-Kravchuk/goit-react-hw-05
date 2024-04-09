@@ -10,7 +10,7 @@ const MovieReviews = () => {
       {error && <ErrorMessage />}
 
       <ul>
-        {movieReviews !== null ? (
+        {movieReviews !== null && movieReviews.length > 0 ? (
           movieReviews.map((review) => (
             <li key={review.id}>
               <p>{`Author: ${review.author}`}</p>

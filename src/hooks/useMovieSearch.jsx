@@ -1,52 +1,51 @@
-import React, { useEffect, useState } from 'react'
-import { fetchTrendingMovies, searchMoviesByName } from '../services/api';
+import React, { useEffect, useState } from "react";
+import { fetchTrendingMovies, searchMoviesByName } from "../services/api";
+import { useSearchParams } from "react-router-dom";
 
 export const useMovieSearch = ({ isMoviesPage = false }) => {
-  const [movies, setMovies] = useState(null)
+  const [movies, setMovies] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [query, setQuery] = useState('');
+  // const [query, setQuery] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get("query");
 
   useEffect(() => {
-    if(isMoviesPage) return;
+    if (isMoviesPage) return;
     async function feachData() {
+      setLoading(true);
       try {
-        setLoading(true)
         setError(false);
-        const data = await fetchTrendingMovies()
-        setMovies(data)
+        const data = await fetchTrendingMovies();
+        setMovies(data);
       } catch (error) {
         setError("Failed to fetch movies. Please try again later.");
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
     }
-    feachData()
-  }, [])
+    feachData();
+  }, []);
 
   useEffect(() => {
-    if (!query)
-    return
-    async function feachMovies() {
+    if (!query) return;
+    async function fetchMovies() {
+      setLoading(true);
       try {
-        setLoading(true)
-        const data = await searchMoviesByName(query)
-        setMovies(data)
+        const data = await searchMoviesByName(query);
+        setMovies(data);
       } catch (error) {
         setError("Failed to fetch movies. Please try again later.");
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-      
-      
     }
-    feachMovies()
-  
-  }, [query])
+    fetchMovies();
+  }, [query]);
 
   const onSetSearchQuery = (searchTerm) => {
-    setQuery(searchTerm)
-  }
-  return { movies, loading, error, onSetSearchQuery }
-}
-
+    // setQuery(searchTerm);
+    setSearchParams({ query: searchTerm });
+  };
+  return { movies, loading, error, onSetSearchQuery };
+};

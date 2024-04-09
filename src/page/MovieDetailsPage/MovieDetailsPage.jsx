@@ -1,18 +1,24 @@
 import { Link, Route, Routes, useLocation } from "react-router-dom";
-import MovieReviews from "../../components/MovieReviews/MovieReviews";
-import MovieCast from "../../components/MovieCast/MovieCast";
+// import MovieReviews from "../../components/MovieReviews/MovieReviews";
+// import MovieCast from "../../components/MovieCast/MovieCast";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loader from "../../components/Loader/Loader";
 import css from "./MovieDetailsPage.module.css";
 import { useDetailsSearch } from "../../hooks/useDetailsSearch";
 import { useRef } from "react";
+import { lazy } from "react";
+import { Suspense } from "react";
+const MovieReviews = lazy(() =>
+  import("../../components/MovieReviews/MovieReviews")
+);
+const MovieCast = lazy(() => import("../../components/MovieCast/MovieCast"));
 
 const MovieDetailsPage = () => {
   const { loading, error, movieData, imageUrl, defaultImg } =
     useDetailsSearch();
 
   const location = useLocation();
-  const backLinkRef = useRef(location.state?.from ?? "/");
+  const backLinkRef = useRef(location.state ?? "/");
 
   return (
     <div>
@@ -49,10 +55,12 @@ const MovieDetailsPage = () => {
             <Link className={css.linkDetails} to="reviews">
               Reviews
             </Link>
-            <Routes>
-              <Route path="/cast" element={<MovieCast />} />
-              <Route path="/reviews" element={<MovieReviews />} />
-            </Routes>
+            <Suspense fallback={<Loader />}>
+              <Routes>
+                <Route path="/cast" element={<MovieCast />} />
+                <Route path="/reviews" element={<MovieReviews />} />
+              </Routes>
+            </Suspense>
           </div>
         </>
       )}
