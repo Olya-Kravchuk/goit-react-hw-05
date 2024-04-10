@@ -3,17 +3,17 @@ import { Route, Routes } from "react-router-dom";
 import Loader from "./components/Loader/Loader";
 // import css from "./App.module.css"
 
-// import Navigation from './components/Navigation/Navigation';
+import Navigation from "./components/Navigation/Navigation";
 // import HomePage from "./pages/HomePage"
 // import MoviesPage from "./pages/MoviesPage"
 // import NotFoundPage from './pages/NotFoundPage';
 // import MovieDetailsPage from './pages/MovieDetailsPage/MovieDetailsPage';
-const Navigation = lazy(() => import("./components/Navigation/Navigation"));
+// const Navigation = lazy(() => import("./components/Navigation/Navigation"));
 const HomePage = lazy(() => import("./pages/HomePage"));
 const MoviesPage = lazy(() => import("./pages/MoviesPage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 const MovieDetailsPage = lazy(() =>
-  import("./page/MovieDetailsPage/MovieDetailsPage")
+  import("./pages/MovieDetailsPage/MovieDetailsPage")
 );
 
 function App() {
